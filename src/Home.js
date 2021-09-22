@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
   // const [name, setName] = useState('mario');
@@ -6,7 +7,11 @@ const Home = () => {
 
   const [blogs, setBlogs] = useState([
     { body: 'Come and welcome to Jesus Christ.', author: 'Doug Wilson', id: 1 },
-    { body: 'God is most glorified in you...', author: 'John Piper', id: 2 },
+    {
+      body: 'God is most glorified in you when you are most satisfied in him.',
+      author: 'John Piper',
+      id: 2,
+    },
     {
       body: 'You are far worse than you realize and yet more loved than you would dare hope',
       author: 'Tim Keller',
@@ -37,13 +42,7 @@ const Home = () => {
       <p>
         {name} is {age} years old
       </p> */}
-      {blogs.map((blog) => (
-        <div className='blog-preview' key={blog.id}>
-          <h2>{blog.author}</h2>
-          <p>{blog.body}</p>
-          <p>— {blog.author}</p>
-        </div>
-      ))}
+      <BlogList blogs={blogs} />
     </div>
   );
 };
