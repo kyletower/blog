@@ -2,12 +2,14 @@ import { useState } from 'react';
 
 const Home = () => {
   const [name, setName] = useState('mario');
+  const [age, setAge] = useState(25);
 
   // first param is automatically receiving event
   const handleClick = (e) => {
     console.log('hello, handleClick');
     console.log(e);
     setName('luigi');
+    setAge(30);
   };
 
   const handleClickAgain = (e, name) => {
@@ -22,7 +24,9 @@ const Home = () => {
       <button onClick={(e) => handleClickAgain(e, 'mario')}>
         Click me too!
       </button>
-      <p>{name}</p>
+      <p>
+        {name} is {age} years old
+      </p>
     </div>
   );
 };
