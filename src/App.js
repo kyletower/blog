@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from './Navbar';
+import Home from './Home';
 
 function App() {
   const title = 'Welcome to my blog!';
@@ -10,6 +11,7 @@ function App() {
     <div className='App'>
       <Navbar />
       <div className='content'>
+        <Home />
         <h1>{title}</h1>
         <p>Liked {likes} times.</p>
         <p>Viewed {Math.random() * 10} times</p>
