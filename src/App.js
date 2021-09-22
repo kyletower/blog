@@ -11,6 +11,7 @@ function App() {
       <Navbar />
       <div className='content'>
         <Home />
+        <p>--Inside App.js--</p>
         <h1>{title}</h1>
         <p>Liked {likes} times.</p>
         <p>Viewed {Math.random() * 10} times</p>
