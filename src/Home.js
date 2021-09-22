@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
 
 const Home = () => {
@@ -24,6 +24,13 @@ const Home = () => {
     setBlogs(newBlogs);
   };
 
+  useEffect(() => {
+    // this functions every time there's a render or rerender,
+    // when data loads and when a reactive var changes state
+    console.log('use effect ran');
+    // fetch data, or communicate with authentication service
+    // don't change the state inside useEffect, lest you cause an inf loop
+  });
   // first param is automatically receiving event
   // const handleClick = (e) => {
   //   console.log('hello, handleClick');
