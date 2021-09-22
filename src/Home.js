@@ -42,7 +42,11 @@ const Home = () => {
       <p>
         {name} is {age} years old
       </p> */}
-      <BlogList blogs={blogs} />
+      <BlogList blogs={blogs} category='All Blogs' />
+      <BlogList
+        blogs={blogs.filter((blog) => blog.author === 'Doug Wilson')}
+        category="Doug's Blogs"
+      />
     </div>
   );
 };
