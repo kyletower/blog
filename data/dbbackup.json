@@ -1,0 +1,19 @@
+{ 
+    "blogs": [
+        {
+            "body": "Come and welcome to Jesus Christ.", 
+            "author": "Doug Wilson", 
+            "id": 1
+        },
+        {
+            "body": "God is most glorified in you when you are most satisfied in him.",
+            "author": "John Piper",
+            "id": 2
+        },
+        {
+            "body": "You are far worse than you realize and yet more loved than you would dare hope",
+            "author": "Tim Keller",
+            "id": 3
+        }
+    ]
+}
