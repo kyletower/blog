@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
 
 const Home = () => {
-  // const [name, setName] = useState('mario');
+  const [name, setName] = useState('mario');
   // const [age, setAge] = useState(25);
 
   const [blogs, setBlogs] = useState([
@@ -27,17 +27,25 @@ const Home = () => {
   useEffect(() => {
     // this functions every time there's a render or rerender,
     // when data loads and when a reactive var changes state
-    console.log('use effect ran');
+    // this is the ideal time to fetch so that the back end
+    // matches what the user sees on the front end
+    console.log('depending on name; use effect ran');
+    console.log(name);
     // fetch data, or communicate with authentication service
     // don't change the state inside useEffect, lest you cause an inf loop
-  });
+  }, [name]);
+
+  useEffect(() => {
+    console.log('depending on blog');
+    console.log('use effect ran!');
+  }, [blogs]);
   // first param is automatically receiving event
-  // const handleClick = (e) => {
-  //   console.log('hello, handleClick');
-  //   console.log(e);
-  //   setName('luigi');
-  //   setAge(30);
-  // };
+  const handleClick = (e) => {
+    console.log('hello, handleClick; setting name to luigi');
+    console.log(e);
+    setName('luigi');
+    // setAge(30);
+  };
 
   // const handleClickAgain = (e, name) => {
   //   console.log(`hello handleClickAgain ${name}`);
@@ -47,13 +55,15 @@ const Home = () => {
   return (
     <div className='home'>
       <h2>Home Page</h2>
-      {/* <button onClick={handleClick}>Click me</button>
-      <button onClick={(e) => handleClickAgain(e, 'mario')}>
+      {
+        <button onClick={handleClick}>Change Name</button>
+
+        /*<button onClick={(e) => handleClickAgain(e, 'mario')}>
         Click me too!
       </button>
-      <p>
-        {name} is {age} years old
-      </p> */}
+      */
+      }
+      <p>{name}</p>
       <BlogList
         blogs={blogs}
         category='All Blogs'
