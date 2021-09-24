@@ -1,53 +1,27 @@
 import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
+import useFetch from './useFetch';
 
 const Home = () => {
   const [name, setName] = useState('mario');
   // const [age, setAge] = useState(25);
 
-  const [blogs, setBlogs] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // grab data: but call it blogs.
+  const {
+    data: blogs,
+    isLoading,
+    error,
+  } = useFetch('http://localhost:8000/blogs');
 
   const handleDelete = (id) => {
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
-
-    fetch(`http://localhost:8000/blogs/${id}`, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json()) // or res.text()
-      .then((res) => console.log(res));
+    // const newBlogs = blogs.filter((blog) => blog.id !== id);
+    // setBlogs(newBlogs);
+    // fetch(`http://localhost:8000/blogs/${id}`, {
+    //   method: 'DELETE',
+    // })
+    //   .then((res) => res.json()) // or res.text()
+    //   .then((res) => console.log(res));
   };
-
-  useEffect(() => {
-    // this functions every time there's a render or rerender,
-    // when data loads and when a reactive var changes state
-    // this is the ideal time to fetch so that the back end
-    // matches what the user sees on the front end
-    console.log('depending on name; use effect ran');
-    console.log(name);
-    // fetch data, or communicate with authentication service
-    // don't change the state inside useEffect, lest you cause an inf loop
-    fetch('http://localhost:8000/blogs')
-      .then((res) => {
-        if (!res.ok) {
-          throw Error('Could not fetch the data for that resource.');
-        }
-
-        return res.json();
-      })
-      .then((data) => {
-        setBlogs(data); // this won't cause an inf loop because we have an empty dependecy array
-        setIsLoading(false);
-        setError(null);
-      })
-      .catch((err) => {
-        // console.error(err.message);
-        setIsLoading(false);
-        setError(err.message);
-      });
-  }, []);
 
   useEffect(() => {
     console.log('depending on blog');
