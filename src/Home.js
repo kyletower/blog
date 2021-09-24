@@ -6,10 +6,17 @@ const Home = () => {
   // const [age, setAge] = useState(25);
 
   const [blogs, setBlogs] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
+
+    fetch(`http://localhost:8000/blogs/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json()) // or res.text()
+      .then((res) => console.log(res));
   };
 
   useEffect(() => {
@@ -26,7 +33,6 @@ const Home = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setBlogs(data); // this won't cause an inf loop because we have an empty dependecy array
       });
   }, []);
@@ -59,6 +65,7 @@ const Home = () => {
       </button>
       */
       }
+      {isLoading && <div>Loading...</div>}
       <p>{name}</p>
       {blogs && (
         <BlogList
