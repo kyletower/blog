@@ -1,2 +1,4 @@
 Database, REST API from scratch.
 JSON server allows us to build a fake REST API
+
+npx json-server --watch data/db.json --port 8000
