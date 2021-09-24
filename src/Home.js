@@ -5,19 +5,7 @@ const Home = () => {
   const [name, setName] = useState('mario');
   // const [age, setAge] = useState(25);
 
-  const [blogs, setBlogs] = useState([
-    { body: 'Come and welcome to Jesus Christ.', author: 'Doug Wilson', id: 1 },
-    {
-      body: 'God is most glorified in you when you are most satisfied in him.',
-      author: 'John Piper',
-      id: 2,
-    },
-    {
-      body: 'You are far worse than you realize and yet more loved than you would dare hope',
-      author: 'Tim Keller',
-      id: 3,
-    },
-  ]);
+  const [blogs, setBlogs] = useState(null);
 
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
@@ -33,7 +21,15 @@ const Home = () => {
     console.log(name);
     // fetch data, or communicate with authentication service
     // don't change the state inside useEffect, lest you cause an inf loop
-  }, [name]);
+    fetch('http://localhost:8000/blogs')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setBlogs(data); // this won't cause an inf loop because we have an empty dependecy array
+      });
+  }, []);
 
   useEffect(() => {
     console.log('depending on blog');
@@ -64,16 +60,20 @@ const Home = () => {
       */
       }
       <p>{name}</p>
-      <BlogList
-        blogs={blogs}
-        category='All Blogs'
-        handleDelete={handleDelete}
-      />
-      <BlogList
-        blogs={blogs.filter((blog) => blog.author === 'Doug Wilson')}
-        category="Doug's Blogs"
-        handleDelete={handleDelete}
-      />
+      {blogs && (
+        <BlogList
+          blogs={blogs}
+          category='All Blogs'
+          handleDelete={handleDelete}
+        />
+      )}
+      {blogs && (
+        <BlogList
+          blogs={blogs.filter((blog) => blog.author === 'Doug Wilson')}
+          category="Doug's Blogs"
+          handleDelete={handleDelete}
+        />
+      )}
     </div>
   );
 };
