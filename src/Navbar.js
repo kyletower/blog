@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
   const style = {
     color: 'white',
@@ -9,10 +11,10 @@ const Navbar = () => {
     <nav className='navbar'>
       <h1>The Metanoia Blog</h1>
       <div className='links'>
-        <a href='/'>Home</a>
-        <a href='/create' style={style}>
+        <Link to='/'>Home</Link>
+        <Link to='/create' style={style}>
           New Blog
-        </a>
+        </Link>
       </div>
     </nav>
   );
