@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Create from './Create';
 
 function App() {
   const title = 'Welcome to my blog!';
@@ -15,8 +16,11 @@ function App() {
         <div className='content'>
           {/* switch guarantees only 1 route at a time is viewed */}
           <Switch>
-            <Route path='/'>
+            <Route exact path='/'>
               <Home />
+            </Route>
+            <Route path='/create'>
+              <Create />
             </Route>
           </Switch>
           <p>--Inside App.js--</p>
