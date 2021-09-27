@@ -8,6 +8,7 @@ const useFetch = (url) => {
   console.log('url inside useFetch: ', url);
 
   useEffect(() => {
+    const abortCont = new AbortController();
     // this functions every time there's a render or rerender,
     // when data loads and when a reactive var changes state
     // this is the ideal time to fetch so that the back end
@@ -16,7 +17,7 @@ const useFetch = (url) => {
     // don't change the state inside useEffect, lest you cause an inf loop
     console.log('url inside useEffect: ', url);
 
-    fetch(url)
+    fetch(url, { signal: abortCont.signal })
       .then((res) => {
         if (!res.ok) {
           throw Error('Could not fetch the data for that resource.');
@@ -30,10 +31,19 @@ const useFetch = (url) => {
         setError(null);
       })
       .catch((err) => {
-        console.error(err.message);
-        setIsLoading(false);
-        setError(err.message);
+        if (err.name === 'AbortError') {
+          console.log('fetch aborted');
+        } else {
+          console.error(err.message);
+          setIsLoading(false);
+          setError(err.message);
+        }
       });
+
+    return () => {
+      console.log('cleanup');
+      abortCont.abort();
+    };
   }, [url]);
 
   return { data, isLoading, error };
