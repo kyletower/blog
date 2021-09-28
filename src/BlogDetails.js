@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import useFetch from './useFetch';
 // import the above from react-router-dom?
 
@@ -11,6 +11,14 @@ const BlogDetails = () => {
     isLoading,
   } = useFetch(`http://localhost:8000/blogs/${id}`);
 
+  // const history = useHistory();
+
+  const handleClick = () => {
+    console.log('handleClick inside BlogDetails.js');
+    fetch('http://localhost:8000/blogs' + blog.id, {
+      method: 'DELETE',
+    }).then(() => {});
+  };
   return (
     <div className='blog-details'>
       {isLoading && <div>Loading...</div>}
@@ -21,6 +29,7 @@ const BlogDetails = () => {
           <div>
             {blog.body} — {blog.author}
           </div>
+          <button onClick={handleClick}>delete</button>
         </article>
       )}
     </div>

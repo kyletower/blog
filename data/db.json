@@ -32,6 +32,30 @@
       "body": "This Body Though!",
       "author": "otto",
       "id": 6
+    },
+    {
+      "title": "hell, blog title",
+      "body": "hello, blog body",
+      "author": "otto",
+      "id": 7
+    },
+    {
+      "title": "test",
+      "body": "test",
+      "author": "otto",
+      "id": 8
+    },
+    {
+      "title": "shoop",
+      "body": "shoop",
+      "author": "kyle",
+      "id": 9
+    },
+    {
+      "title": "badoop",
+      "body": "badoop",
+      "author": "otto",
+      "id": 10
     }
   ]
 }
