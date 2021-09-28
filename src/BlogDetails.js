@@ -11,14 +11,17 @@ const BlogDetails = () => {
     isLoading,
   } = useFetch(`http://localhost:8000/blogs/${id}`);
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const handleClick = () => {
     console.log('handleClick inside BlogDetails.js');
-    fetch('http://localhost:8000/blogs' + blog.id, {
+    fetch('http://localhost:8000/blogs/' + blog.id, {
       method: 'DELETE',
-    }).then(() => {});
+    }).then(() => {
+      history.push('/');
+    });
   };
+
   return (
     <div className='blog-details'>
       {isLoading && <div>Loading...</div>}
