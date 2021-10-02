@@ -16,7 +16,7 @@ const Home = ({ query, setQuery }) => {
     <div className='home'>
       {error && <div>{error}</div>}
       {isLoading && <div>Loading...</div>}
-      {blogs && category === 'All Blogs' && (
+      {blogs && query === '' && category === 'All Blogs' && (
         <BlogList blogs={blogs} category={category} />
       )}
       {/* use below for a search */}

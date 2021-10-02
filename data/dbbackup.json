@@ -1,28 +1,22 @@
 {
-    "blogs": [
-      {
-        "title": "A Quote by Douglas Wilson",
-        "body": "Come and welcome to Jesus Christ.",
-        "author": "Doug Wilson",
-        "id": 1
-      },
-      {
-        "title": "A Quote by John Piper",
-        "body": "God is most glorified in you when you are most satisfied in him.",
-        "author": "John Piper",
-        "id": 2
-      },
-      {
-        "title": "A Quote by Tim Keller",
-        "body": "You are far worse than you realize and yet more loved than you would dare hope",
-        "author": "Tim Keller",
-        "id": 3
-      },
-      {
-        "title": "My Blog Title",
-        "body": "My Blog Body",
-        "author": "Otto",
-        "id": 4
-      }
-    ]
-  }
+  "blogs": [
+    {
+      "title": "A Quote by Douglas Wilson",
+      "body": "Come and welcome to Jesus Christ.",
+      "author": "Doug Wilson",
+      "id": 1
+    },
+    {
+      "title": "A Quote by John Piper",
+      "body": "God is most glorified in you when you are most satisfied in him.",
+      "author": "John Piper",
+      "id": 2
+    },
+    {
+      "title": "A Quote by Tim Keller",
+      "body": "You are far worse than you realize and yet more loved than you would dare hope.",
+      "author": "Tim Keller",
+      "id": 3
+    }
+  ]
+}
