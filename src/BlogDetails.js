@@ -1,6 +1,6 @@
 import { useHistory, useParams } from 'react-router';
+// import the above from react-router-dom? What's the diff?
 import useFetch from './useFetch';
-// import the above from react-router-dom?
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -13,9 +13,9 @@ const BlogDetails = () => {
 
   const history = useHistory();
 
-  const handleClick = () => {
+  const handleClickDelete = () => {
     console.log('handleClick inside BlogDetails.js');
-    fetch('http://localhost:8000/blogs/' + blog.id, {
+    fetch(`http://localhost:8000/blogs/${blog.id}`, {
       method: 'DELETE',
     }).then(() => {
       history.push('/');
@@ -28,11 +28,10 @@ const BlogDetails = () => {
       {error && <div> {error} </div>}
       {blog && (
         <article>
-          <h2>{blog.author}</h2>
-          <div>
-            {blog.body} — {blog.author}
-          </div>
-          <button onClick={handleClick}>delete</button>
+          <h2>{blog.title}</h2>
+          <div>{blog.body}</div>
+          <p>— {blog.author}</p>
+          <button onClick={handleClickDelete}>Delete</button>
         </article>
       )}
     </div>
