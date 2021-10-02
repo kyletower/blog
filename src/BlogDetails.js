@@ -14,7 +14,6 @@ const BlogDetails = () => {
   const history = useHistory();
 
   const handleClickDelete = () => {
-    console.log('handleClick inside BlogDetails.js');
     fetch(`http://localhost:8000/blogs/${blog.id}`, {
       method: 'DELETE',
     }).then(() => {
