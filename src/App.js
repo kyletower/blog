@@ -6,17 +6,13 @@ import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 
 function App() {
-  const title = 'Welcome to my blog!';
-  const likes = 37;
-  const link = 'https://duckduckgo.com';
-
   return (
     <Router>
       <div className='App'>
         {/* This Navbar will show on all routes */}
         <Navbar />
         <div className='content'>
-          {/* switch guarantees only 1 route at a time is viewed */}
+          {/* switch guarantees only 1 route is viewed at a time */}
           <Switch>
             <Route exact path='/'>
               <Home />
@@ -31,11 +27,6 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
-          <p>--Inside App.js--</p>
-          <h1>{title}</h1>
-          <p>Liked {likes} times.</p>
-          <p>Viewed {Math.random() * 10} times</p>
-          <a href={link}>Duck Duck Go!</a>
         </div>
       </div>
     </Router>
