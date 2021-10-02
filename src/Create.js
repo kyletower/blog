@@ -4,13 +4,12 @@ import { useHistory } from 'react-router';
 const Create = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const [author, setAuthor] = useState('otto');
+  const [author, setAuthor] = useState('Otto');
   const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    console.log('inside handle submit');
     e.preventDefault();
     const blog = { title, body, author };
 
@@ -23,7 +22,6 @@ const Create = () => {
     }).then(() => {
       console.log('new blog added');
       setIsLoading(false);
-      // history.go(-1);
       history.push('/');
     });
   };
@@ -47,17 +45,14 @@ const Create = () => {
         ></textarea>
         <label>Blog Author:</label>
         <select value={author} onChange={(e) => setAuthor(e.target.value)}>
-          <option value='otto'>otto</option>
-          <option value='kyle'>kyle</option>
+          <option value='Brandon'>Brandon</option>
+          <option value='Otto'>Otto</option>
         </select>
         {!isLoading ? (
           <button>Add Blog</button>
         ) : (
           <button disabled>Adding Blog...</button>
         )}
-        <p>{title}</p>
-        <p>{body}</p>
-        <p>{author}</p>
       </form>
     </div>
   );
