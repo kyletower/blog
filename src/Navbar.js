@@ -1,14 +1,18 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+// import { useState, useEffect } from 'react';
 
-const Navbar = () => {
+const Navbar = ({ query, setQuery }) => {
   const style = {
     color: 'white',
     backgroundColor: '#2cb34c',
     borderRadius: '8px',
   };
 
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
+
+  // useEffect(() => {
+  //   console.log('useEff in Navbar.js');
+  // }, [query]);
 
   return (
     <nav className='navbar'>

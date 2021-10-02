@@ -4,18 +4,25 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    console.log('useEff in App.js');
+  }, [query]);
+
   return (
     <Router>
       <div className='App'>
         {/* This Navbar will show on all routes */}
-        <Navbar />
+        <Navbar query={query} setQuery={setQuery} />
         <div className='content'>
           {/* switch guarantees only 1 route is viewed at a time */}
           <Switch>
             <Route exact path='/'>
-              <Home />
+              <Home query={query} setQuery={setQuery} />
             </Route>
             <Route path='/create'>
               <Create />
