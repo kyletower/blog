@@ -22,7 +22,12 @@ const Home = ({ query, setQuery }) => {
       {/* use below for a search */}
       {blogs && query && (
         <BlogList
-          blogs={blogs.filter((blog) => blog.author.includes(query))}
+          blogs={blogs.filter(
+            (blog) =>
+              blog.author.includes(query) ||
+              blog.body.includes(query) ||
+              blog.title.includes(query)
+          )}
           category='Search Results...'
         />
       )}
