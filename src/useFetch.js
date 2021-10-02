@@ -5,7 +5,6 @@ const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log('url inside useFetch: ', url);
 
   useEffect(() => {
     const abortCont = new AbortController();
@@ -15,18 +14,16 @@ const useFetch = (url) => {
     // matches what the user sees on the front end
     // fetch data, or communicate with authentication service
     // don't change the state inside useEffect, lest you cause an inf loop
-    console.log('url inside useEffect: ', url);
 
     fetch(url, { signal: abortCont.signal })
       .then((res) => {
         if (!res.ok) {
           throw Error('Could not fetch the data for that resource.');
         }
-        console.log(res);
         return res.json();
       })
       .then((data) => {
-        setData(data); // this won't cause an inf loop because we have an empty dependecy array
+        setData(data); // this won't cause an inf loop because we have url in the dependecy array
         setIsLoading(false);
         setError(null);
       })
