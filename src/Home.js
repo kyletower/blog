@@ -14,12 +14,13 @@ const Home = () => {
       {error && <div>{error}</div>}
       {isLoading && <div>Loading...</div>}
       {blogs && <BlogList blogs={blogs} category='All Blogs' />}
-      {blogs && (
+      {/* use below for a search */}
+      {/* {blogs && (
         <BlogList
           blogs={blogs.filter((blog) => blog.author === 'Doug Wilson')}
           category='Douglas Wilson Blogs'
         />
-      )}
+      )} */}
     </div>
   );
 };
