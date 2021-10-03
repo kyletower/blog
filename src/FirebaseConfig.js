@@ -23,6 +23,11 @@ const db = getFirestore(app);
 async function getBlogs(db) {
   const blogsCol = collection(db, 'blogs');
   const blogSnapshot = await getDocs(blogsCol);
-  const blogList = blogSnapshot.docs.map((doc) => doc.data());
+  const blogList = blogSnapshot.docs.map((doc) => ({
+    ...doc.data(),
+    id: doc.id,
+  }));
   return blogList;
 }
+
+export { getBlogs, db };
