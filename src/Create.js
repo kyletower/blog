@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import { db, createBlog } from './FirebaseConfig';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -9,21 +10,23 @@ const Create = () => {
 
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const blog = { title, body, author };
 
-    setIsLoading(true);
+    // setIsLoading(true);
 
-    fetch('http://localhost:8000/blogs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(blog),
-    }).then(() => {
-      console.log('new blog added');
-      setIsLoading(false);
-      history.push('/');
-    });
+    // fetch('http://localhost:8000/blogs', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(blog),
+    // }).then(() => {
+    //   console.log('new blog added');
+    //   setIsLoading(false);
+    //   history.push('/');
+    // });
+    await createBlog(db, blog);
+    history.push('/');
   };
 
   return (

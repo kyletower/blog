@@ -6,6 +6,7 @@ import {
   doc,
   getDocs,
   getDoc,
+  addDoc,
 } from 'firebase/firestore/lite';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -49,4 +50,11 @@ async function getBlog(db, id) {
   }
 }
 
-export { getBlogs, getBlog, db };
+async function createBlog(db, blog) {
+  // Add a new document with a generated id.
+  const docRef = await addDoc(collection(db, 'blogs'), blog);
+  console.log('Document written with ID: ', docRef.id);
+  return docRef.id;
+}
+
+export { getBlogs, getBlog, db, createBlog };
