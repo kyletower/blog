@@ -6,7 +6,7 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [author, setAuthor] = useState('Otto');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   const history = useHistory();
 

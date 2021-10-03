@@ -1,13 +1,13 @@
 import BlogList from './BlogList';
 import { useState, useEffect } from 'react';
-import useFetch from './useFetch';
+// import useFetch from './useFetch';
 import { getBlogs, db } from './FirebaseConfig';
 
 const Home = ({ query, setQuery }) => {
   // grab data: but call it blogs.
   // const { data, isLoading, error } = useFetch('');
 
-  const [category, setCategory] = useState('All Blogs');
+  const [category] = useState('All Blogs');
 
   const [blogs, setBlogs] = useState(null);
 
