@@ -1,6 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+} from 'firebase/firestore/lite';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,4 +36,17 @@ async function getBlogs(db) {
   return blogList;
 }
 
-export { getBlogs, db };
+async function getBlog(db, id) {
+  const docRef = doc(db, 'blogs', id);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    console.log('Document data:', docSnap.data());
+    return docSnap.data();
+  } else {
+    // doc.data() will be undefined in this case
+    console.log('No such document!');
+  }
+}
+
+export { getBlogs, getBlog, db };

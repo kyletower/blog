@@ -13,7 +13,7 @@ const Home = ({ query, setQuery }) => {
 
   useEffect(() => {
     async function fetchMyAPI() {
-      let blogData = await getBlogs(db);
+      const blogData = await getBlogs(db);
       // response = await response.json()
       setBlogs(blogData);
     }

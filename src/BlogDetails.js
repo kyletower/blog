@@ -1,14 +1,27 @@
 import { useHistory, useParams } from 'react-router';
 // import the above from react-router-dom? What's the diff?
-import useFetch from './useFetch';
+// import useFetch from './useFetch';
+import { useEffect, useState } from 'react';
+import { getBlog, db } from './FirebaseConfig';
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const {
-    data: blog,
-    error,
-    isLoading,
-  } = useFetch(`http://localhost:8000/blogs/${id}`);
+  // const {
+  //   data: blog,
+  //   error,
+  //   isLoading,
+  // } = useFetch(`http://localhost:8000/blogs/${id}`);
+
+  const [blog, setBlog] = useState(null);
+
+  useEffect(() => {
+    async function fetchMyAPI() {
+      const blogData = await getBlog(db, id);
+      setBlog(blogData);
+    }
+
+    fetchMyAPI();
+  }, [id]);
 
   const history = useHistory();
 
@@ -22,8 +35,8 @@ const BlogDetails = () => {
 
   return (
     <div className='blog-details'>
-      {isLoading && <div>Loading...</div>}
-      {error && <div> {error} </div>}
+      {/* {isLoading && <div>Loading...</div>}
+      {error && <div> {error} </div>} */}
       {blog && (
         <article>
           <h2>{blog.title}</h2>
