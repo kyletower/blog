@@ -23,6 +23,12 @@
       "body": "Body!",
       "author": "Brandon",
       "id": 4
+    },
+    {
+      "title": "This is a new blog title",
+      "body": "this isa. new body",
+      "author": "Otto",
+      "id": 5
     }
   ]
 }

@@ -5,6 +5,7 @@ import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 import { useState, useEffect } from 'react';
+import './FirebaseConfig';
 
 function App() {
   const [query, setQuery] = useState('');
